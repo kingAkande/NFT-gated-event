@@ -48,7 +48,7 @@ contract NftEvent {
             description: _description,
             eventDate: _eventDate,
             isOngoing: _isOngoing,
-            registeredUsers:  // Initialize with empty list
+            registeredUsers.push(msg.sender)  // Initialize with empty list
             
         });
     }
