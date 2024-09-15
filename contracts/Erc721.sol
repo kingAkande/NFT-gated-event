@@ -1,17 +1,20 @@
 // SPDX-License-Identifier: MIT
+pragma solidity ^0.8.20;
 
-pragma solidity ^0.8.24;
+import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 
-import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
-import "@openzeppelin/contracts/access/Ownable.sol";
 
-contract MyToken is ERC721, Ownable {
-    constructor(address initialOwner)
-        ERC721("MyToken", "MTK")
-        Ownable(initialOwner)
-    {}
+contract OlaToken is ERC20 {
 
-    function safeMint(address to, uint256 tokenId) public onlyOwner {
-        _safeMint(to, tokenId);
+    address owner;
+
+    constructor() ERC20("OlaToken", "OTK") {
+            owner = msg.sender;
+             _mint(msg.sender, 1);
+    }
+  
+
+    function mint(address to, uint256 amount) public {
+        _mint(to, amount);
     }
 }
